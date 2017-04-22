@@ -47,7 +47,7 @@ $ns cost $n(6) $n(9) 3
 proc record {} {
   global sink0 f0 sink3 f3
   set ns [Simulator instance]
-  set time 0.015
+  set time 0.02
   set bw0 [$sink0 set bytes_]
   set bw3 [$sink3 set bytes_]
   set now [$ns now]
@@ -100,7 +100,7 @@ $cbr0 attach-agent      $udp0
 set expo3 [new Application/Traffic/Exponential]
 $expo3 set packetSize_   1500
 $expo3 set rate_         750k
-# $expo3 set interval_     0.025
+$expo3 set interval_     0.016
 $expo3 attach-agent      $udp3
 
 # ---[Simulation options]--
@@ -111,9 +111,9 @@ $ns at 1.0 "$expo3 start"
 #$ns rtmodel-at 2.2 down $n(1) $n(2)
 #$ns rtmodel-at 3.2 up   $n(1) $n(2)
 
-$ns at 4.5 "$expo3 stop"
-$ns at 4.8 "$cbr0 stop"
-$ns at 5.0 "finish"
+$ns at 24.5 "$expo3 stop"
+$ns at 24.8 "$cbr0 stop"
+$ns at 25.0 "finish"
 
 
 # -- [run script] --
