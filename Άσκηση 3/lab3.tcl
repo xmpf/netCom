@@ -61,12 +61,12 @@ proc finish {} {
 set tcp0 [new Agent/TCP/Reno]
 $tcp0 set packetSize_	2000
 ##### changed from 12 -> 17
-$tcp0 set window_		12
+$tcp0 set window_		17
 ## Disable modelling initial SYN/SYNACK exchange
 $tcp0 set syn_			false
 ## initial size of congestion window
 ##### changed from 12 -> 17
-$tcp0 set windowInit_	12
+$tcp0 set windowInit_	17
 ## define class ID
 $tcp0 set fid_			0
 $ns attach-agent $n(0) $tcp0
@@ -110,6 +110,6 @@ $ns at 0.0 "$n(2) label SW_receiver_3114702"
 
 $ns at 0.4 "$ftp0 produce 150"
 $ns at 0.4 "$ftp1 produce 150"
-$ns at 15.0 "finish"
+$ns at 35.0 "finish"
 
 $ns run
